@@ -31,6 +31,7 @@
             # build tools
             qt6.qmake
             gnumake
+            cmake
 
             # deps
             qt6.qtbase
