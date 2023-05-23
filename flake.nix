@@ -2,7 +2,7 @@
   description = "QML Example Project";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -22,10 +22,7 @@
       pkgs = import nixpkgs {inherit system;};
     in {
       devShell =
-        pkgs.mkShell.override
-        {
-          stdenv = pkgs.clangStdenv;
-        }
+        pkgs.mkShell
         {
           packages = with pkgs; [
             # editor
@@ -36,9 +33,10 @@
             gnumake
 
             # deps
-            qt6.qtbase.dev
             qt6.qtbase
             qt6.qtdeclarative
+            qt6.qt5compat
+            qtcreator-qt6
           ];
 
           shellHook = ''
