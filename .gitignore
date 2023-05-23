@@ -2,4 +2,5 @@
 result
 build/
 compile_commands.json
+CMakeLists.txt.user
 .cache/
