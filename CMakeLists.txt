@@ -1,16 +1,21 @@
 cmake_minimum_required(VERSION 3.16)
 
-set(PROJECT_NAME example-qml)
-project(PROJECT_NAME VERSION 1.0.0 LANGUAGES CXX)
+project(qml VERSION 1.0 LANGUAGES CXX)
 
+find_package(Qt6 COMPONENTS Quick Gui REQUIRED)
+
+qt_standard_project_setup()
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
-qt_standard_project_setup()
-
-qt_add_executable(PROJECT_NAME
-  cpp/main.cpp
+qt_add_executable(example-qml
+    cpp/main.cpp
 )
 
-target_link_libraries(PROJECT_NAME PRIVATE Qt6::Quick)
+qt_add_qml_module(example-qml
+    URI qml
+    QML_FILES
+        qml/main.qml
+)
+
+target_link_libraries(example-qml PRIVATE Qt6::Gui Qt6::Quick)
