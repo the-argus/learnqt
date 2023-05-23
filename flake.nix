@@ -25,9 +25,6 @@
         pkgs.mkShell
         {
           packages = with pkgs; [
-            # editor
-            bear
-
             # build tools
             qt6.qmake
             gnumake
